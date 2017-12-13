@@ -19,7 +19,7 @@ const tree = dirTree(path.join(__dirname, './output'),['.jpg', '.png']);
 
   // making directory of files
 var history = require('./history.js');
-history.trackHistory();
+  history.trackHistory();
 
 
 var forceResize = function (name,dst,width,height){
