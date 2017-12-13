@@ -1,0 +1,22 @@
+
+   <!-- <nav class="navbar navbar-default">
+    <div class="container-fluid">
+    <div class="navbar-header">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+        <li><a>File Upload</a></li>
+        </ul>
+    </div>
+    </div>
+    </div>
+</nav> -->
+
+
+<div class="box-container">
+    <ul class="tabs">
+       <li *ngFor="let state of states" (click)="setState(state)" class="tab" [class.selected]="currentState === state">{{state}}</li>
+    </ul>
+     <div class="upload">
+      <uploadhistory *ngIf="currentState === 'uploadhistory'"></uploadhistory>
+      <uploadplace *ngIf="currentState === 'uploadplace'"></uploadplace>
+</div>

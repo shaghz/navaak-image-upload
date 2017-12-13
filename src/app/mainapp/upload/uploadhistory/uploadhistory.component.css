@@ -1,0 +1,14 @@
+li{
+    list-style: none;
+    
+}
+img{
+    background-color: rgb(165, 98, 186);
+}
+button{
+    background-color: rgb(165, 98, 186);
+    padding:2px;
+}
+.container{
+    margin-top:50px;
+}
