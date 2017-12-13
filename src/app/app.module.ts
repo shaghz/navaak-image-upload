@@ -2,8 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Ng2ImgToolsModule } from 'ng2-img-tools'; 
-import { DropzoneModule, DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 import { AppComponent } from './app.component';
 import { UploadComponent } from './mainapp/upload/upload.component';
 import { LoginComponent } from './login/login.component';
@@ -35,7 +33,6 @@ import { ClipboardModule } from 'ngx-clipboard';
     BrowserModule,
     FlexLayoutModule,
     // DropzoneModule.forRoot(DROPZONE_CONFIG),
-    Ng2ImgToolsModule,
     ReactiveFormsModule,
     routing,
     FormsModule,

@@ -37,9 +37,11 @@ var forceResize = function (name,dst,width,height){
     .noProfile()
     .write('./output/'+name+'/'+dst, function (err) {
       if (!err) console.log('resized to '+ width +'x'+height);
+      
+      console.log('tracked')
     });
     return (width,height);    
-
+   
 };
 
 
@@ -56,12 +58,14 @@ app.get('*', function(req, res){
 
 
 app.post('/upload', function(req, res){
+ 
   // create an incoming form object
   var form = new formidable.IncomingForm();
   form.multiples = true;
   form.uploadDir = path.join(__dirname, '/uploads/');
   
   form.parse(req, function(err, fields, files) {
+    
     var file = files.file;
     var uploadedImagePath = path.join(form.uploadDir, file.name); 
 
@@ -79,7 +83,6 @@ app.post('/upload', function(req, res){
         return res.status(500).jsonp({ status: 'upload-failed', err: err });
       }
 
-      // return res.status(500).jsonp({ status: 'upload-failed', err: 'yohooooooo' });
 
       console.log('upload logic, step 2')
       return res.jsonp({ status: 'upload-success', img: uploadedImagePath });
