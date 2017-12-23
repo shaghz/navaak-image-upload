@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('navaak-upload App', () => {
+describe('upload App', () => {
   let page: AppPage;
 
   beforeEach(() => {

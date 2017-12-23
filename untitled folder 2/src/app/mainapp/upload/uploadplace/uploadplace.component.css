@@ -1,0 +1,288 @@
+  .row{
+    box-sizing: border-box;
+  }
+  table td:first-child{
+    width: 240px;
+    overflow: hidden;
+    display: inline-block;
+    white-space: nowrap;
+}
+  .menubox {
+    display:flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: calc(100% - 16px);
+    min-height: 10px;
+    padding: 2px 16px 10px 16px;
+    margin: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 14px;
+  }
+
+  .ribbon{
+    position: relative;
+    padding: 0 0.3em;
+    font-size:1.000em;
+    margin: 0 0 0 -2.5em;
+    line-height: 1.875em;
+    color: white;
+    border-radius: 0 0.156em 0.156em 0;
+    background: rgb(103, 65, 114);
+    box-shadow: -1px 2px 3px rgba(0,0,0,0.5);
+  }
+  
+  .ribbon:before, .ribbon:after{
+    position:absolute;
+    content: '';
+    display: block;
+  }
+  
+  .ribbon:before{
+    width: 0.469em;
+    height: 100%;
+    padding: 0 0 0.438em;
+    top:0;
+    left: -0.469em;
+    background:inherit;
+    border-radius: 0.313em 0 0 0.313em;
+  }
+  
+  .ribbon:after{
+    width: 0.313em;
+    height: 0.313em;
+    background: rgba(0,0,0,0.35);
+    bottom: -0.313em;
+    left: -0.313em;
+    border-radius: 0.313em 0 0 0.313em;
+    box-shadow: inset -1px 2px 2px rgba(0,0,0,0.3);
+  }
+  
+  @media (max-width: 600px) {
+    
+    
+    .ribbon{
+      line-height: 1.143em;
+      padding: 1em;
+    }
+    
+    .ribbon:before, .ribbon:after{
+      font-size: 0.714em;
+    }
+  }
+  .button-area{
+    box-sizing: border-box;
+    width: calc(100% - 32px);
+    min-height: 10px;
+    padding: 4px 8px;
+    margin: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 14px;
+  }
+
+  input [type="checkbox"]{
+    padding-right:20px;
+  }
+ 
+  .size-form{
+   display:flex;
+   flex-direction: column;
+   justify-content: center;
+   text-align: center;
+  }
+
+  .lil-btn{
+    width:25px;
+    height: 25px;
+    margin-left:2px;
+  }
+  .glyphicon{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+
+  }
+
+ .glyphicon-pencil{
+  font-size: 0.8em;
+  float:right;
+  padding-top:10px;
+ }
+ 
+ td{
+   padding-top:10px;
+ }
+
+ input[type=file]{
+  font-size: 10px;
+  padding: 20px 0 35px 0 ;
+
+  background-color: #eee;
+  border:0;
+ }
+ .resize-area label{
+  display: flex;
+  align-items: baseline;
+ }
+ .resize-box{
+   padding-top: 20px;
+ }
+
+ .resize-box span {
+    padding-left: 10px
+}
+
+@keyframes click-wave {
+  0% {
+    height: 40px;
+    width: 40px;
+    opacity: 0.35;
+    position: relative;
+  }
+  100% {
+    height: 200px;
+    width: 200px;
+    margin-left: -80px;
+    margin-top: -80px;
+    opacity: 0;
+  }
+}
+
+.option-input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  position: relative;
+  top: 3px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 15px;
+  width: 15px;
+  transition: all 0.15s ease-out 0s;
+  background: #cbd1d8;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 0.5rem;
+  outline: none;
+  position: relative;
+  z-index: 1000;
+}
+.option-input:hover {
+  background: #9faab7;
+}
+.option-input:checked {
+  background: rgb(165, 98, 186);
+}
+.option-input:checked::before {
+  height: 15px;
+  width: 15px;
+  position: absolute;
+  content: '✔';
+  display: inline-block;
+  font-size: 10px;
+  text-align: center;
+  line-height: 15px;
+}
+.option-input:checked::after {
+  -webkit-animation: click-wave 0.65s;
+  -moz-animation: click-wave 0.65s;
+  animation: click-wave 0.65s;
+  background: rgb(165, 98, 186);
+  content: '';
+  display: block;
+  position: relative;
+  z-index: 100;
+}
+*,
+*:before,
+*:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+button span {
+    -webkit-transition: 0.6s;
+    -moz-transition: 0.6s;
+    -o-transition: 0.6s;
+    transition: 0.6s;
+    -webkit-transition-delay: 0.2s;
+    -moz-transition-delay: 0.2s;
+    -o-transition-delay: 0.2s;
+    transition-delay: 0.2s;
+}
+
+button:before,
+button:after {
+    content: '';
+    position: absolute;
+    
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    -webkit-transition: .4s,opacity .6s;
+    -moz-transition: .4s,opacity .6s;
+    -o-transition: .4s,opacity .6s;
+    transition: .4s,opacity .6s;
+}
+
+button:before {
+    content: attr(data-hover);
+    -webkit-transform: translate(-150%,0);
+    -moz-transform: translate(-150%,0);
+    -ms-transform: translate(-150%,0);
+    -o-transform: translate(-150%,0);
+    transform: translate(-150%,0);
+}
+
+button:after {
+    content: attr(data-active);
+    -webkit-transform: translate(150%,0);
+    -moz-transform: translate(150%,0);
+    -ms-transform: translate(150%,0);
+    -o-transform: translate(150%,0);
+    transform: translate(150%,0);
+}
+
+button:hover span,
+button:active span {
+    opacity: 0;
+    -webkit-transform: scale(0.3);
+    -moz-transform: scale(0.3);
+    -ms-transform: scale(0.3);
+    -o-transform: scale(0.3);
+    transform: scale(0.3);
+}
+
+button:hover:before,
+button:active:after {
+    opacity: 1;
+    -webkit-transform: translate(0,0);
+    -moz-transform: translate(0,0);
+    -ms-transform: translate(0,0);
+    -o-transform: translate(0,0);
+    transform: translate(0,0);
+    -webkit-transition-delay: .4s;
+    -moz-transition-delay: .4s;
+    -o-transition-delay: .4s;
+    transition-delay: .4s;
+}
+
+button:active:before {
+    -webkit-transform: translate(-150%,0);
+    -moz-transform: translate(-150%,0);
+    -ms-transform: translate(-150%,0);
+    -o-transform: translate(-150%,0);
+    transform: translate(-150%,0);
+    -webkit-transition-delay: 0s;
+    -moz-transition-delay: 0s;
+    -o-transition-delay: 0s;
+    transition-delay: 0s;
+}

@@ -1,6 +1,7 @@
 
 .login-page{
-    background-color: pink;
+    background-image: url('../../assets/Website-Design-Background-1.jpg');
+    background-size: 200vh 100vh;
     height:100vh;
 }
 .login-form{
@@ -10,15 +11,16 @@
      text-align: center;
     align-items: center;
     box-sizing: border-box;
-    border: 2px solid #F0C8C8;
     border-radius: 3px;
     padding: 20px 20px;
-    box-shadow:2px 2px 2px 1px rgba(196, 154, 154, 0.54);
-    background-color: #FEF2F2;
+    background-color: #fff;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); 
+    -webkit-box-shadow: 1px 1px 3px 3px rgba(204, 204, 204, 0.37);  
+    -moz-box-shadow:    1px 1px 3px 3px rgba(204, 204, 204, 0.37);  
+    box-shadow:         1px 1px 3px 3px rgba(204, 204, 204, 0.37);
 }
  
 .login-form button{
@@ -32,11 +34,75 @@
 .login-form input{
     width:100%;
     border: 0;
-    border-bottom: 1px solid #DD7E7E;
+    border-bottom: 1px solid rgb(103, 65, 114);
     transition: border 1s;
-    background-color: #FEF2F2;
+    background-color: #fff;
 }
+
 .login-form input:focus{
     border-bottom: solid 2px #6B0C40;
-
+    outline: none;
 } 
+
+.ribbon{
+    position: relative;
+    padding: 0 13em;
+    font-size:1.000em;
+    margin-left:-2.88em;
+    margin-bottom: 50px;
+    line-height: 1.875em;
+    color: white;
+    border-radius: 0 0.156em 0.156em 0;
+    background: rgb(103, 65, 114);
+    box-shadow: -1px 2px 3px rgba(0,0,0,0.5);
+  }
+  .ribbon:after{
+    
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+	left: 0px;
+	top: 100%;
+	border-width: 5px 10px;
+	border-style: solid;
+	border-color: rgb(224, 224, 224) rgb(224, 224, 224) transparent transparent;
+  }
+  .ribbon:before{
+    content: ' ';
+    position: absolute;
+    width: 49px;
+    height: 0;
+    left: -30px;
+    top: 15px;
+    border-width: 12px 10px;
+    border-style: solid;
+    border-color: rgb(103, 65, 114) rgb(103, 65, 114) rgb(103, 65, 114) transparent;
+    box-shadow: 0 8px 6px -6px rgba(204, 204, 204, 0.37);
+  }
+
+  
+  @media (max-width: 1400px) {
+    
+    
+    .ribbon{
+      line-height: 0.143em;
+      padding: 1em 8em;
+    }
+    
+    .ribbon:before, .ribbon:after{
+      font-size: 0.714em;
+    }
+  }
+  .btn{
+    background-color: rgb(103, 65, 114);
+    color:white;
+    margin:10px 10px ;
+    }
+
+  .btn:hover {
+    background-color: rgba(103, 65, 114, 0.849);
+  }
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px white inset;
+}

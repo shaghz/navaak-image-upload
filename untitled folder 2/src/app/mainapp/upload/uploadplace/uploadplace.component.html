@@ -1,0 +1,119 @@
+<div class="row">
+  <div class="col-md-4">
+      <form  class="size-form">
+          <div class="form-group menubox">
+              <div for="multiple"class="headlabel ribbon"><Strong>Upload Here:</Strong></div>
+              <input type="file" class="form-control" name="multiple" ng2FileSelect  [uploader]="uploader" multiple  />
+          </div>
+
+      <form (ngSubmit)="onSubmit()">
+        <div class="menubox resize-area">
+         <div class="headlabel ribbon"><strong>Choose Size:  </strong></div> 
+          <div class="resize-box">
+            <label for="500">
+            <input type="checkbox" class="option-input checkbox" (change)="check()"[(ngModel)]="size1" [ngModelOptions]="{standalone: true}" ><label for="my-checkbox"></label>
+            <span>500 x 500</span>
+            </label> 
+            <label for="400">
+            <input type="checkbox" class="option-input checkbox" (change)="check()"[(ngModel)]="size2"[ngModelOptions]="{standalone: true}" >
+            <span>400 x 400</span>
+            </label>
+            <label for="320">
+            <input type="checkbox" class="option-input checkbox" (change)="check()"[(ngModel)]="size3"[ngModelOptions]="{standalone: true}" >
+            <span>320 x 320</span>
+            </label>
+            <label for="300">
+            <input type="checkbox" class="option-input checkbox" (change)="check()"[(ngModel)]="size4"[ngModelOptions]="{standalone: true}" >
+            <span>300 x 300</span>
+            </label>
+            <label for="280">
+            <input type="checkbox" class="option-input checkbox" (change)="check()" [(ngModel)]="size5"[ngModelOptions]="{standalone: true}" >
+            <span>280 x 280</span>
+            </label>
+            <label for="200">
+            <input type="checkbox"  class="option-input checkbox" (change)="check()"[(ngModel)]="size6"[ngModelOptions]="{standalone: true}" >
+            <span>200 x 200</span>
+            </label>
+            <label for="140">
+            <input type="checkbox"class="option-input checkbox" (change)="check()" [(ngModel)]="size7"[ngModelOptions]="{standalone: true}" >
+            <span>140 x 140</span>
+            </label>
+            <label for="96">
+            <input type="checkbox"class="option-input checkbox" (change)="check()" [(ngModel)]="size8"[ngModelOptions]="{standalone: true}" >
+            <span>96 x 96</span>
+            </label>
+            <label for="50">
+            <input type="checkbox"class="option-input checkbox" (change)="check()" [(ngModel)]="size9"[ngModelOptions]="{standalone: true}" >
+            <span>50 x 50</span>
+            </label>  
+          </div>
+      </div>  
+
+            <div class="button-area">
+            <button  type="submit" class="btn btn-success btn-s" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length || !togglebutton">
+            <span class="glyphicon glyphicon-upload"></span> Resize all 
+            </button>
+
+            <button type="button" class="btn btn-danger btn-s"   (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
+            <span class="glyphicon glyphicon-trash"></span> Remove all</button>
+            </div>
+        </form>
+    </form>
+    </div>
+    <div class="col-md-8">
+    <div >{{err}}</div>
+      Queue length: {{ uploader?.queue?.length }}
+     
+      <table class="table">
+          <thead>
+          <tr>
+              <th width="50%">Name</th>
+              <th>Size</th>
+              <th>Progress</th>
+              <th>Status</th>
+              <th>Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+             <tr *ngFor="let item of uploader.queue;let i = index; trackBy: arrayTrackBy">
+                 
+                <td>
+                    
+                   <img [src]="imagepreviewArray[i]" width="50" *ngIf="filePreviewPath" class="tmp" /> <strong> {{ item.file.name }}</strong>
+                    <i (click)="hideme[i] = !hideme[i]" class="glyphicon glyphicon-pencil"></i>   
+                    <div [hidden]="!hideme[i]">
+                        <input name="value" type="text" [(ngModel)]="item.file.name ">
+                    </div>
+                </td>
+                <td nowrap>{{ item.file.size/1024/1024 | number:'.2' }} MB</td>
+                <td>
+                  <div class="progress" style="margin-bottom: 0;">
+                      <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                  </div>
+                </td>
+
+                <td class="text-center">
+                    <span *ngIf="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                    <span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                    <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                </td>
+                <button type="button" class="btn btn-success lil-btn"  (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                    <span class="glyphicon glyphicon-upload"></span> 
+                </button>
+                <button type="button" class="btn btn-danger lil-btn" (click)="item.remove()">
+                    <span class="glyphicon glyphicon-trash"></span> 
+                </button>
+               
+
+                
+          </tr>
+        </tbody>
+      </table>         
+          <div>
+              Queue progress:
+            <div class="progress">
+                  <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+            </div>
+          </div>
+    </div>
+</div>

@@ -6,8 +6,8 @@ import {NavbarComponent} from '../mainapp/navbar/navbar.component';
 import {MainappComponent} from '../mainapp/mainapp.component';
 import{AuthGuardService} from './AuthGaurd.service';
 export const routes:Routes =[
-    { path: '', component: MainappComponent },
-    { path: 'mainapp', component: MainappComponent },
+    { path: '', component: LoginComponent },
+    { path: 'mainapp', component: MainappComponent ,canActivate: [AuthGuardService] },
     { path: 'login', component: LoginComponent},
     { path: 'navbar', component: NavbarComponent}
 ]

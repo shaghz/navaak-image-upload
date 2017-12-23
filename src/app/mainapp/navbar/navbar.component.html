@@ -1,10 +1,13 @@
 <nav>       
-  <ul class="navbar-left">
-     <li><a href="#"><span class="glyphicon glyphicon-upload"></span> Upload Files</a></li>
-  </ul>
-   <ul>
-     <li class="navbar-right"><a href="#">Wlc Home! </a>
-        
-    </li>
-   </ul> 
+  <ul >
+     <li class="navbar-left"><span class="glyphicon glyphicon-upload"></span> Upload Files</li>
+
+     <li class="navbar-right ">{{user}}
+       <button class="logout" type="button" [routerLink]="['/login']">log out?!</button>
+       <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Link 1</a>
+
+        </div>
+     </li>
+    </ul>
  </nav> 

@@ -1,0 +1,125 @@
+import { Component, ViewChild } from '@angular/core';
+import { Http } from '@angular/http';
+import { DropzoneComponent , DropzoneDirective, DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
+import {ImageCropperComponent, CropperSettings} from 'ng2-img-cropper';
+import {Size} from '../../models/size';
+import { FormGroup, FormsModule, FormControl, ReactiveFormsModule, FormBuilder, Validators,FormArray } from '@angular/forms';
+
+import { Response, Headers } from '@angular/http';
+import 'rxjs/add/operator/map';
+
+@Component({
+  selector: 'app-upload',
+  templateUrl: './upload.component.html',
+  styleUrls: ['./upload.component.css']
+})
+
+export class UploadComponent  {
+// get size and send them to server
+
+    name: string;
+    width: number;
+    height: number;
+    ischecked:  boolean;
+     user={sizes:[
+       {"name":"500 * 500","ischecked":false,"id":500},
+       {"name":"400 * 400","ischecked":false,"id":300}     
+     ]
+    }
+     form;
+      constructor(private http:Http,private fb:FormBuilder) {
+        console.clear();
+        
+        this.form = this.fb.group({
+          sizes: this.buildSizes()
+        });
+        
+        console.log(this.form.get("sizes"))
+      }
+      get sizes(): FormArray {
+        return this.form.get('sizes') as FormArray;
+      };
+      
+      
+      buildSizes() {
+        const arr = this.user.sizes.map(s => {
+          return this.fb.control(s.ischecked);
+          
+        })
+        return this.fb.array(arr);
+      }
+      
+      submit(value) {
+        const f = Object.assign({}, value, {
+          sizes: value.sizes.map((s, i) => {
+          return {
+            id: this.user.sizes[i].id,
+            ischecked: s
+          }
+        })
+        
+        })
+        var a = [];
+        if(this.ischecked){
+          a.push(this.user.sizes..id);
+        }
+          JSON.stringify(f);
+          return this.http.post('http://localhost:3000/sizes' , f)
+          .subscribe();
+          
+      }
+    //dropzone
+  public type: string = 'component';
+  
+    public disabled: boolean = false;
+  
+    public config: DropzoneConfigInterface = {
+      clickable: true,
+      maxFiles: 1,
+      autoReset: null,
+      errorReset: null, 
+      cancelReset: null
+    };
+  
+    @ViewChild(DropzoneComponent) componentRef: DropzoneComponent;
+    @ViewChild(DropzoneDirective) directiveRef: DropzoneDirective;
+
+   
+  
+    reset() {
+      if (this.type === 'component') {
+        this.componentRef.directiveRef.reset();
+      } else {
+        this.directiveRef.reset();
+      }
+    }
+  
+    toggleType() {
+      this.type = this.type == 'component' ? 'directive' : 'component';
+    }
+  
+    toggleAutoReset() {
+      this.config.autoReset = this.config.autoReset ? null : 5000;
+      this.config.errorReset = this.config.errorReset ? null : 5000;
+      this.config.cancelReset = this.config.cancelReset ? null : 5000;
+    }
+  
+    toggleMultiUpload() {
+      this.config.maxFiles = this.config.maxFiles ? null : 1;
+    }
+  
+    toggleClickAction() {
+      this.config.clickable = !this.config.clickable;
+    }
+  
+    toggleDisabledState() {
+      this.disabled = !this.disabled;
+    }
+  
+    onUploadError(args: any) {
+  }
+
+    onUploadSuccess(args: any) {
+      console.log('onUploadSuccess:', args);
+    }
+}

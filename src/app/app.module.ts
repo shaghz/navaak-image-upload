@@ -20,6 +20,12 @@ import { CollapsibleModule } from 'angular2-collapsible'; // <-- import the modu
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ClipboardModule } from 'ngx-clipboard';
 
+import { fakeBackendProvider } from './fake-backend';
+import { MockBackend, MockConnection } from '@angular/http/testing';
+import { BaseRequestOptions } from '@angular/http';
+import { AuthGuardService } from './routes/AuthGaurd.service';
+import { UserService} from './login/user.service';
+
 
 @NgModule({
   declarations: [
@@ -44,7 +50,10 @@ import { ClipboardModule } from 'ngx-clipboard';
     
     FileUploadModule 
   ],
-  providers: [LoginService,appRoutingProviders,yourService],
+  providers: [LoginService,appRoutingProviders,yourService,AuthGuardService,UserService,
+    fakeBackendProvider,
+    MockBackend,
+    BaseRequestOptions],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

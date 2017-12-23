@@ -1,0 +1,20 @@
+li{
+    list-style: none;
+    
+}
+img{
+    background-color: rgb(165, 98, 186);
+}
+button{
+    background-color: rgb(165, 98, 186);
+    padding:2px;
+}
+.main{
+    width:780px;
+    height:400px;
+    overflow-y: scroll;
+}
+.container{
+    margin-top:50px;
+    
+}

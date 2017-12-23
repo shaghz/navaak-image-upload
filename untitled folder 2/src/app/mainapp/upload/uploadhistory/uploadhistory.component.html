@@ -1,0 +1,24 @@
+<div class="main">
+<div class="container col-sm-12">
+<ul *ngFor="let name of names;let i = index">
+   <collapsible-list [type]="'accordion'">
+    <collapsible-list-item>
+      <collapsible-header class="waves-effect">
+        {{names[i].name}} ({{names[i].type}})
+      </collapsible-header>
+      <collapsible-body  [expanded]="false">
+       <ul *ngFor="let name of names[i].children;let k = index">
+         <li #sth >
+           {{names[i].children[k].name}}({{names[i].children[k].type}})
+           <button (click)="copyToClipboard(i,k)"  ngxClipboard  [cbContent]="textToCopy" #url data-value="i">
+             <img src="../../../../assets/clippy.svg" width="20px" height="20px" title="Copy ImageUrl to Clipboard">
+          </button>
+           <button (click)="imageWindow(i,k)"  ><img src="../../../../assets/newwindow.svg" width="20px" height="20px" title="Open Image in a New Window !"></button>
+          </li>
+        </ul>
+      </collapsible-body>
+    </collapsible-list-item>
+ </collapsible-list>
+</ul>
+</div>
+</div>
